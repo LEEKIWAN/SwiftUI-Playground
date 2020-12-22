@@ -121,5 +121,5 @@ struct ObservableList: View {
 - @State, @Biding 은 SwiftUI 프레임워크가 값을 관리 한다.  
 - SwiftUI가 아닌 직접 값을 관리하고 싶을때 ObservableObject를 채택하는 클래스를 만들면 된다.
 - ObservableObject 채택한 Class에서는 하나 이상의 @Published 가 필요하며, 없으면 ObservableObject을 채택할 필요가 없다.
-- @Published 값이 변경이 되면, 
-- @ObservedObject로 
+- @ObservedObject 은 ObservableObject를 상속한 클래스를 인스턴스를 사용할 때 필요하다. 
+- @ObservedObject은 @Stated와 같은 역할이며, ObservableObject채택한 클래스의 @Published 변수가 업데이트 될때마다 뷰를 다시 그린다.
