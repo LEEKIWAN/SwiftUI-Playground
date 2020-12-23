@@ -1,7 +1,7 @@
 # State and Binding
 
 
-UIKit은 뷰의 이벤트를 처리하고 이로 바뀌는 상태값(변수)들 모든 작업을 프로그래머가 직접 변경했다.
+UIKit은 뷰의 이벤트를 처리하고 이로 바뀌는 상태값(변수)들 모든 작업을 프로그래머가 직접 변경했다. <br>
 반면 SwiftUI는 ReactiveX 패턴으로 처리 할수 있으며, 상태값이 변경이 되면 자동으로 이벤트가 처리되며, 이는 UIKit 보다 정확한 상태를 저장할 수 있게 도와준다.
 
 
@@ -29,7 +29,7 @@ struct OneWayConnection: View {
 ```
 
 State 는 상태값이 변경이 될때마다, body: some View를 다시 그린다. <br>
-State 값은 구조체 내부 뷰의 상태값을 저장하며 직접 관리한다. 그렇기 때문에 주로 private 변수와 같이 사용된다.
+State 값은 구조체 내부 뷰의 상태값을 저장하며 상태값이 바뀔때마다 뷰를 다시 그린다. 주로 private 변수와 같이 사용된다.
 
 
 ## @Binding
@@ -65,8 +65,8 @@ struct BindingButton: View {
 }
 
 ```
-- @State 값은 State가 선언된 구조체에서 사용하고 주로 private와 사용 되어지기때문에 구조체 외부에서 사용할수가 없다. <br>
-- 외부에서 사용하기위해 @Binding이 있다. State변수에 $을 붙이면 Binding 타입으로 리턴되며, @Binding 변수와 연결 할수 있다. <br>
+- @State 값은 State가 선언된 구조체에서 사용하고 주로 private와 사용 되어지기 때문에 구조체 외부에서 사용할수가 없다. <br>
+- 외부에서 사용하기 위해 @Binding이 있다. State변수에 $을 붙이면 Binding 타입으로 리턴되며, @Binding 변수와 연결 할수 있다. <br>
 - 주로 @State 변수명하고 똑같은 변수명으로 사용하며, Stored Property가 아니다. (초기값이 없다.) <br>
 - State는 선언한 뷰가 소유하고 값을 저장하는 공간을 가지고 있지만, Binding은 연결 하는 역할만 하며, 저장하는 공간을 가지고 있지는 않다.
 
@@ -121,5 +121,5 @@ struct ObservableList: View {
 - @State, @Biding 은 SwiftUI 프레임워크가 값을 관리 한다.  
 - SwiftUI가 아닌 직접 값을 관리하고 싶을때 ObservableObject를 채택하는 클래스를 만들면 된다.
 - ObservableObject 채택한 Class에서는 하나 이상의 @Published 가 필요하며, 없으면 ObservableObject을 채택할 필요가 없다.
-- @ObservedObject 은 ObservableObject를 상속한 클래스를 인스턴스를 사용할 때 필요하다. 
-- @ObservedObject은 @Stated와 같은 역할이며, ObservableObject채택한 클래스의 @Published 변수가 업데이트 될때마다 뷰를 다시 그린다.
+- @ObservedObject 은 ObservableObject를 상속한 클래스를 인스턴스를 사용할 때 필요하다. (쌍으로 사용된다)
+- @ObservedObject은 @State와 같은 역할이며, ObservableObject 채택한 클래스의 @Published 변수가 업데이트 될때마다 뷰를 다시 그린다.
